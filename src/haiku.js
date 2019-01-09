@@ -6,7 +6,7 @@ class Haiku {
   this.words = this.haiku.split(" ");
   }
 
-  function new_count(word) {
+function newCount(word) {
     let input = word.toLowerCase();
     if(word.length <= 3) { return 1; }
      let first = input.replace(/(?:[^laeiouy]es|ed|[^laeiouy]e)$/, '');
@@ -16,15 +16,20 @@ class Haiku {
     return second.match(/[aeiouy]{1,2}/g).length;
   }
 
-  runCount() {
+function runCount(array) {
     let count = 0;
-    for(i = 0 ; i < this.words.length; i++) {
-      let syllable = new_count(this.words);
+    for(var i = 0 ; i < array.length; i++) {
+      let syllable = newCount(array[i]);
       count += syllable;
     }
+    return count;
   }
 
 }
 
   var haiku = "A mountain village under the piled-up snow the sound of water";
   haiku = new Haiku(haiku);
+
+  for (var i = 0; i < array.length; i++) {
+    array[i]
+  }
