@@ -1,16 +1,15 @@
-import { pingPong } from './ping-pong';
+import { Haiku } from './haiku.js';
 import './styles.css';
 import $ from 'jquery';
 import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
+
+// const haiku = "something something something"
+// haiku = new Haiku
+
+
 $(document).ready(function() {
-  $('#ping-pong-form').submit(function(event) {
-    event.preventDefault();
-    var goal = $('#goal').val();
-    var output = pingPong(goal);
-    output.forEach(function(element) {
-      $('#solution').append("<li>" + element + "</li>");
-    });
-  });
+  var haiku = "A mountain village under the piled-up snow the sound of water";
+  haiku = new Haiku(haiku);
 });
