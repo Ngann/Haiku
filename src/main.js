@@ -9,14 +9,9 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 // haiku = new Haiku
 
 $(document).ready(function() {
-  var haiku = "mountain village under the piled-up snow the sound of water";
+  var haiku = "A mountain village under the piled-up snow the sound of water";
   const haikuObj = new Haiku(haiku);
-  var word = "mountain";
-  const wordObj = new Haiku(word);
-  var check = wordObj.anotherCount();
-  // var check = newCount(wordObj);
-  console.log("wordObj syllable",check);
   var checktwo = haikuObj.anotherCount();
   // var checktwo = newCount(haikuObj);
-  console.log("haikuObj syllable",checktwo);
+  console.log("haikuObj syllable: ",checktwo);
 });
