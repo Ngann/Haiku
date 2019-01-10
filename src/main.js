@@ -4,25 +4,9 @@ import $ from 'jquery';
 import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'faker';
+import { generateWord } from './randomHaiku.js';
 var faker = require('faker');
 // import { randomHaiku } from './randomHaiku.js';
-
-
-
-var randomHaiku = function() {
-  var array = [];
-  var sentence = array.join(" ");
-  var syllables = sentence.runCount();
-  if (syllables <= 5) {
-    for(var i = 0; i < sentence.length; i++) {
-      var randomWords = faker.random.word();
-      array.push(randomWords);
-    }
-  } else {
-    return sentence;
-  }
-};
-
 
 $(document).ready(function() {
 
@@ -72,14 +56,8 @@ $(document).ready(function() {
     var randomWord = faker.random.word();
     var randomHaiku = new Haiku(randomWord);
     var check4 = randomHaiku.anotherCount();
-    while (check4 != 2) {
-        var randomWord = faker.random.word();
-        var randomHaiku = new Haiku(randomWord);
-        var check4 = randomHaiku.anotherCount();
-    if (check4 === 2) {
-        break
-    }
-  }
+    var syllable = 2
+    var randomWord = generateWord(check4, syllable)
   $("#firstLine").attr("value", `${randomWord}` + " is to the");
     console.log(check4);
   });
@@ -89,14 +67,8 @@ $(document).ready(function() {
     var randomWord = faker.random.word();
     var randomHaiku = new Haiku(randomWord);
     var check4 = randomHaiku.anotherCount();
-    while (check4 != 5) {
-        var randomWord = faker.random.word();
-        var randomHaiku = new Haiku(randomWord);
-        var check4 = randomHaiku.anotherCount();
-    if (check4 === 5) {
-        break
-    }
-  }
+    var syllable = 5
+    var randomWord = generateWord(check4, syllable)
   $("#secondLine").attr("value", `${randomWord}` + ", and the");
     console.log(check4);
   });
@@ -107,15 +79,11 @@ $(document).ready(function() {
     var randomWord = faker.random.word();
     var randomHaiku = new Haiku(randomWord);
     var check4 = randomHaiku.anotherCount();
-    while (check4 != 3) {
-        var randomWord = faker.random.word();
-        var randomHaiku = new Haiku(randomWord);
-        var check4 = randomHaiku.anotherCount();
-    if (check4 === 3) {
-        break
-    }
-  }
-  $("#thirdLine").attr("value", `${randomWord}` + " that floats");
+    var syllable = 3
+    var syllable2 = 1
+    var randomWord = generateWord(check4, syllable)
+    var randomWord2 = generateWord(check4, syllable2)
+  $("#thirdLine").attr("value", `${randomWord}` + " that " + `${randomWord2}`);
     console.log(check4);
   });
 });

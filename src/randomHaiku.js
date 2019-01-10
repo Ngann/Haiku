@@ -1,27 +1,15 @@
 import 'faker';
+import { Haiku } from './haiku.js';
 var faker = require('faker');
 
-randomHaiku = function() {
-  var array = [];
-  var sentence = array.join(" ");
-  var syllables = sentence.runCount();
-  if (syllables <= 17) {
-    for(var i = 0; i < sentence.length; i++) {
-      var randomWords = faker.random.word();
-      array.push(randomWords);
-      console.log(array)
+export function generateWord(check, syllable) {
+      while (check4 != syllable) {
+          var randomWord = faker.random.word();
+          var randomHaiku = new Haiku(randomWord);
+          var check4 = randomHaiku.anotherCount();
+      if (check4 === syllable) {
+          break
+      }
     }
-  } else {
-      return sentence;
+    return randomWord
   }
-}
-
-runCount = function() {
-  let count = 0;
-  let array = this.haiku.split(" ");
-  for(var i = 0 ; i < array.length; i++) {
-    let syllable = newCount(array[i]);
-    count += syllable;
-  }
-  return count;
-}
