@@ -9,9 +9,14 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 // haiku = new Haiku
 
 $(document).ready(function() {
-  var haiku = "A mountain village under the piled-up snow the sound of water";
-  const haikuObj = new Haiku(haiku);
-  var checktwo = haikuObj.anotherCount();
-  // var checktwo = newCount(haikuObj);
-  console.log("haikuObj syllable: ",checktwo);
+  $("#okay").click(function(event) {
+    event.preventDefault();
+    var haiku = $("input#testing").val();
+    console.log(haiku)
+    const haikuObj = new Haiku(haiku);
+    var checktwo = haikuObj.anotherCount();
+    // var checktwo = newCount(haikuObj);
+    $(".output").text("syllable count: " + checktwo);
+    console.log("haikuObj syllable: ",checktwo);
+  });
 });
