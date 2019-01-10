@@ -3,48 +3,93 @@ import './styles.css';
 import $ from 'jquery';
 import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import 'faker';
+var faker = require('faker');
+// import { randomHaiku } from './randomHaiku.js';
 
 
-// const haiku = "something something something"
-// haiku = new Haiku
+
+var randomHaiku = function() {
+  var array = [];
+  var sentence = array.join(" ");
+  var syllables = sentence.runCount();
+  if (syllables <= 17) {
+    for(var i = 0; i < sentence.length; i++) {
+      var randomWords = faker.random.word();
+      array.push(randomWords);
+    }
+  } else {
+    return sentence;
+  }
+};
+
 
 $(document).ready(function() {
-  $("#first").click(function(event) {
+
+  $(".userInput").submit(function(event) {
     event.preventDefault();
-    var haiku = $("input#firstLine").val();
-    console.log(haiku)
-    const haikuObj = new Haiku(haiku);
-    var check = haikuObj.anotherCount();
-    if (check === 5) {
-      $('#firstLine').addClass("form-control is-valid")
+    var line1 = $("input#firstLine").val();
+    var line2 = $("input#secondLine").val();
+    var line3 = $("input#thirdLine").val();
+    const row1 = new Haiku(line1);
+    const row2 = new Haiku(line2);
+    const row3 = new Haiku(line3);
+
+    var check1 = row1.anotherCount();
+    // console.log(check1);
+    if (check1 === 5) {
+      $('#firstLine')
+        .removeClass("form-control is-invalid")
+        .addClass("form-control is-valid");
     } else {
-      $('#firstLine').addClass("form-control is-invalid")
+      $('#firstLine')
+        .addClass("form-control is-invalid");
     }
-    $(".outputFirst").text("syllable count for line one: " + check);
-    console.log("haikuObj syllable: ",check);
+    var check2 = row2.anotherCount();
+    // console.log(check2);
+    if (check2 === 7) {
+      $('#secondLine')
+        .removeClass("form-control is-invalid")
+        .addClass("form-control is-valid");
+    } else {
+      $('#secondLine')
+        .addClass("form-control is-invalid");
+    }
+    var check3 = row3.anotherCount();
+    // console.log(check3);
+    if (check3 === 5) {
+      $('#thirdLine')
+        .removeClass("form-control is-invalid")
+        .addClass("form-control is-valid");
+    } else {
+      $('#thirdLine')
+        .addClass("form-control is-invalid");
+    }
   });
 
-
-  $("#second").click(function(event) {
+  $("#first").click(function(event){
     event.preventDefault();
-    var haiku = $("input#secondLine").val();
-    console.log(haiku)
-    const haikuObj = new Haiku(haiku);
-    var checktwo = haikuObj.anotherCount();
-    // var checktwo = newCount(haikuObj);
-    $(".outputSecond").text("syllable count for line two: " + checktwo);
-    console.log("haikuObj syllable: ",checktwo);
+    var array = [];
+    var randomWord = faker.random.word();
+    array.push(randomWord);
+    console.log("word:", randomWord);
+
+    var sentence = array.join(" ");
+    const row4 = new Haiku(sentence);
+
+    var syllables = row4.anotherCount();
+    if (syllables < 18) {
+      for(var i = 0; i < sentence.length; i++) {
+        var randomWords = faker.random.word();
+        array.push(randomWords);
+        console.log("array:", array);
+      }
+      console.log(array.join(" "))
+      return array.join(" ")
+    }
+
+    console.log(syllables);
+    $("#firstLine").attr("value", `${sentence}`);
   });
 
-
-  $("#third").click(function(event) {
-    event.preventDefault();
-    var haiku = $("input#thirdLine").val();
-    console.log(haiku)
-    const haikuObj = new Haiku(haiku);
-    var checktwo = haikuObj.anotherCount();
-    // var checktwo = newCount(haikuObj);
-    $(".outputThird").text("syllable count for line three: " + checktwo);
-    console.log("haikuObj syllable: ",checktwo);
-  });
 });
