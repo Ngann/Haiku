@@ -13,7 +13,7 @@ var randomHaiku = function() {
   var array = [];
   var sentence = array.join(" ");
   var syllables = sentence.runCount();
-  if (syllables <= 17) {
+  if (syllables <= 5) {
     for(var i = 0; i < sentence.length; i++) {
       var randomWords = faker.random.word();
       array.push(randomWords);
@@ -69,27 +69,53 @@ $(document).ready(function() {
 
   $("#first").click(function(event){
     event.preventDefault();
-    var array = [];
     var randomWord = faker.random.word();
-    array.push(randomWord);
-    console.log("word:", randomWord);
-
-    var sentence = array.join(" ");
-    const row4 = new Haiku(sentence);
-
-    var syllables = row4.anotherCount();
-    if (syllables < 18) {
-      for(var i = 0; i < sentence.length; i++) {
-        var randomWords = faker.random.word();
-        array.push(randomWords);
-        console.log("array:", array);
-      }
-      console.log(array.join(" "))
-      return array.join(" ")
+    var randomHaiku = new Haiku(randomWord);
+    var check4 = randomHaiku.anotherCount();
+    while (check4 != 3) {
+        var randomWord = faker.random.word();
+        var randomHaiku = new Haiku(randomWord);
+        var check4 = randomHaiku.anotherCount();
+    if (check4 === 3) {
+        break
     }
-
-    console.log(syllables);
-    $("#firstLine").attr("value", `${sentence}`);
+  }
+  $("#firstLine").attr("value", `${randomWord}` + " is the");
+    console.log(check4);
   });
 
+  $("#second").click(function(event){
+    event.preventDefault();
+    var randomWord = faker.random.word();
+    var randomHaiku = new Haiku(randomWord);
+    var check4 = randomHaiku.anotherCount();
+    while (check4 != 5) {
+        var randomWord = faker.random.word();
+        var randomHaiku = new Haiku(randomWord);
+        var check4 = randomHaiku.anotherCount();
+    if (check4 === 5) {
+        break
+    }
+  }
+  $("#secondLine").attr("value", `${randomWord}` + " and the");
+    console.log(check4);
+  });
+
+
+  $("#third").click(function(event){
+    event.preventDefault();
+    var randomWord = faker.random.word();
+    var randomHaiku = new Haiku(randomWord);
+    var check4 = randomHaiku.anotherCount();
+    while (check4 != 3) {
+        var randomWord = faker.random.word();
+        var randomHaiku = new Haiku(randomWord);
+        var check4 = randomHaiku.anotherCount();
+    if (check4 === 3) {
+        break
+    }
+  }
+  $("#thirdLine").attr("value", `${randomWord}` + " that floats");
+    console.log(check4);
+  });
 });
