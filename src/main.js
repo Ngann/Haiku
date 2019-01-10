@@ -72,15 +72,15 @@ $(document).ready(function() {
     var randomWord = faker.random.word();
     var randomHaiku = new Haiku(randomWord);
     var check4 = randomHaiku.anotherCount();
-    while (check4 != 3) {
+    while (check4 != 2) {
         var randomWord = faker.random.word();
         var randomHaiku = new Haiku(randomWord);
         var check4 = randomHaiku.anotherCount();
-    if (check4 === 3) {
+    if (check4 === 2) {
         break
     }
   }
-  $("#firstLine").attr("value", `${randomWord}` + " is the");
+  $("#firstLine").attr("value", `${randomWord}` + " is to the");
     console.log(check4);
   });
 
@@ -97,7 +97,7 @@ $(document).ready(function() {
         break
     }
   }
-  $("#secondLine").attr("value", `${randomWord}` + " and the");
+  $("#secondLine").attr("value", `${randomWord}` + ", and the");
     console.log(check4);
   });
 
