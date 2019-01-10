@@ -14,11 +14,17 @@ $(document).ready(function() {
     var haiku = $("input#firstLine").val();
     console.log(haiku)
     const haikuObj = new Haiku(haiku);
-    var checktwo = haikuObj.anotherCount();
-    // var checktwo = newCount(haikuObj);
-    $(".outputFirst").text("syllable count for line one: " + checktwo);
-    console.log("haikuObj syllable: ",checktwo);
+    var check = haikuObj.anotherCount();
+    if (check === 5) {
+      $('#firstLine').addClass("form-control is-valid")
+    } else {
+      $('#firstLine').addClass("form-control is-invalid")
+    }
+    $(".outputFirst").text("syllable count for line one: " + check);
+    console.log("haikuObj syllable: ",check);
   });
+
+
   $("#second").click(function(event) {
     event.preventDefault();
     var haiku = $("input#secondLine").val();
@@ -29,6 +35,8 @@ $(document).ready(function() {
     $(".outputSecond").text("syllable count for line two: " + checktwo);
     console.log("haikuObj syllable: ",checktwo);
   });
+
+
   $("#third").click(function(event) {
     event.preventDefault();
     var haiku = $("input#thirdLine").val();
