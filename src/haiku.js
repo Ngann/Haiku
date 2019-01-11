@@ -28,7 +28,6 @@ class Haiku {
     }
     return count;
   }
-
 }
 
 export { Haiku };
